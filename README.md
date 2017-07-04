@@ -1,2 +1,3 @@
-# react-component-dev-ui
-个人写的一套基于react的ui组件汇总
+# react-simple-o2o-demo
+
+React-router基础知识，详情参考[这里](./docs/README.md)
