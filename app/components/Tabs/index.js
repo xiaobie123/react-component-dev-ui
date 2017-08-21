@@ -13,4 +13,4 @@ import Tab from './Tab'
 import TabPanel from './TabPanel'
 import './index.less'
 
-export  default  { Tabs, TabList, Tab, TabPanel }
+export { Tabs, TabList, Tab, TabPanel }
