@@ -7,7 +7,7 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-//import 'font-awesome/css/font-awesome.css'
+import 'font-awesome/css/font-awesome.css'
 import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 
