@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Tab1,Tab2,Tab3} from '../../components';
-const {  Tabs, TabList, Tab, TabPanel } = Tab3;
+import { Tab1,Tab2} from '../../components';
+import { Tabs, TabList, Tab, TabPanel} from '../../components/Tabs';
 
 
 class Home extends React.Component {
