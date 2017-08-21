@@ -50,6 +50,7 @@ class TabPanel extends Component {
   }
 
   prepareIsActive(props) {
+    debugger;
     const { tabs } = this.context
     if ('activeKey' in props) {
       this.active = props.activeKey === tabs.props.activeKey
@@ -60,6 +61,7 @@ class TabPanel extends Component {
   }
 
   render() {
+    debugger;
     const { children, className, activeKey, ...other } = this.props
     const { tabs } = this.context
 
