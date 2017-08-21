@@ -31,6 +31,7 @@ class Tab extends Component {
   }
 
   render() {
+    debugger;
     const {
       children, className, activeKey, abolishClose, ...other
     } = this.props
