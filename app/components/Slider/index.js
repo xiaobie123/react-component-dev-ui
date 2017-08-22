@@ -70,10 +70,10 @@ class Slider extends Component {
     BODY.addEventListener('mouseup', this.mouseUpFn)
   }
 
-  handleMouseMove(event) {
-    const slider = this.refs.slider
-    const selectedBar = this.refs.selectedBar
-    const bar = this.refs.bar
+  handleMouseMove(event) { //鼠标移动函数
+    const slider = this.refs.slider  //拿到滑块dom
+    const selectedBar = this.refs.selectedBar  //拿到进度条dom
+    const bar = this.refs.bar    //拿到进度条容器dom（把进度条限制在容器内）
 
     this.offsetLeft = this.getOffsetLeft(bar) + this.marginLeft
     if (this.isDown) {
@@ -96,7 +96,7 @@ class Slider extends Component {
     }
   }
 
-  handleMouseUp() {
+  handleMouseUp() { //鼠标抬起
     const selectedBar = this.refs.selectedBar
     if (typeof selectedBar == 'undefined') {
       return
