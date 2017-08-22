@@ -16,7 +16,7 @@ class ToggleNode {
   constructor(node, openedClassName, reflowTrigger) {
     this.node = node
     this.openedClassName = openedClassName
-    this.reflowTrigger = reflowTrigger || (() => {
+    this.reflowTrigger = reflowTrigger || (() => { //触发重绘
       this.node.offsetWidth
     })
     this.node.style.display = 'none'
@@ -30,10 +30,10 @@ class ToggleNode {
 
   close() {
     classlist(this.node).remove(this.openedClassName)
-    const onTransitionEnd = () => {
+    const onTransitionEnd = () => {//有动画的话执行完动画在隐藏
       this.node.style.display = 'none'
       this.node.removeEventListener(ToggleNode.END_EVENT, onTransitionEnd)
-      this.onClose && this.onClose()
+      this.onClose && this.onClose() //有回调就执行 
     }
     this.node.addEventListener(ToggleNode.END_EVENT, onTransitionEnd)
   }

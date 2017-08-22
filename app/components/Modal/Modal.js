@@ -10,8 +10,8 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import classlist from 'classlist'
-import ToggleNode from '../_shared/ToggleNode'
-import EventPool from '../_shared/EventPool'
+import ToggleNode from '../_shared/ToggleNode'  //用于为dom添加一个class或移除一个class
+import EventPool from '../_shared/EventPool'    //存储函数队列，不能触发第二次
 import ModalContent from './ModalContent'
 
 const scrollbarWidth = (() => {
@@ -40,11 +40,11 @@ class Modal extends Component {
     'open' in nextProps && this.setState({open: nextProps.open})
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps, nextState) { //   一直在隐藏的话就不用render了
     return !(this.state.open === nextState.open && nextState.open === false)
   }
 
-  componentDidMount() {
+  componentDidMount() {   //算是最关键的地方了
     this.updateBodyState(this.state.open, false)
     if (this.state.open) {
       this.renderIntoDocument()
@@ -72,7 +72,7 @@ class Modal extends Component {
   }
 
   updateBodyState(open, prevOpen) {
-    if (this.context.modalContent) {
+    if (this.context.modalContent) { //一开始是没有的
       return
     }
     const body = document.body
