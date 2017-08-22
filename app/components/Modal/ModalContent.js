@@ -24,7 +24,7 @@ class ModalContent extends Component {
     }
   }
 
-  backUp() {
+  backUp() { //向上20个像素
     this.relativeValue += 20
     this.transform()
     const {modalContent} = this.props.modal.context
@@ -33,7 +33,7 @@ class ModalContent extends Component {
     }
   }
 
-  goForward() {
+  goForward() { //向下20个像素
     this.relativeValue -= 20
     this.transform()
     const {modalContent} = this.props.modal.context
@@ -47,7 +47,7 @@ class ModalContent extends Component {
   }
 
   handleModalClick(e) {
-    if (e.target.className === 'bfd-modal__modal') {
+    if (e.target.className === 'bfd-modal__modal') {//点击外部区域模态框自动关闭
       if (!this.props.lock) {
         this.props.close()
       } else {

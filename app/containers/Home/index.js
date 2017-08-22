@@ -2,9 +2,14 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Tab1,Tab2} from '../../components';
 import { Tabs, TabList, Tab, TabPanel} from '../../components/Tabs';
+import { Modal, ModalHeader, ModalBody } from '../../components/Modal';
+import Button from '../../components/Button';
 
 
 class Home extends React.Component {
+    handleOpen() {
+        this.refs.modal.open()
+    }
     render() {
         return (
             <div>
@@ -12,7 +17,7 @@ class Home extends React.Component {
                 <Link to="/list">to list</Link>
                 <Tab2>
                     <div name="社会新闻">
-                        社会新闻的内容
+                        社会新闻的内容>
                     </div>
                     <div name="体育世界">
                         体育世界的内容
@@ -29,6 +34,31 @@ class Home extends React.Component {
                   <TabPanel>我是群体特征报告</TabPanel>
                   <TabPanel>我是样例用户画像</TabPanel>
                 </Tabs>
+
+                <div>
+                    <Button onClick={::this.handleOpen}>Open</Button>
+                    <Modal ref="modal">
+                      <ModalHeader>
+                        <h4>Heading</h4>
+                      </ModalHeader>
+                      <ModalBody>
+                        <Button
+                          type="minor"
+                          onClick={() => this.refs.modal2.open()}
+                        >
+                          Open
+                        </Button>
+                        <Modal ref="modal2" size="sm">
+                          <ModalHeader>
+                            <h4>Heading</h4>
+                          </ModalHeader>
+                          <ModalBody>
+                            Modal Body
+                          </ModalBody>
+                        </Modal>
+                      </ModalBody>
+                    </Modal>
+                </div>
             </div>
         )
     }
