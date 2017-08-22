@@ -4,12 +4,19 @@ import { Tab1,Tab2} from '../../components';
 import { Tabs, TabList, Tab, TabPanel} from '../../components/Tabs';
 import { Modal, ModalHeader, ModalBody } from '../../components/Modal';
 import Button from '../../components/Button';
-
+import Slider from '../../components/Slider'
 
 class Home extends React.Component {
     handleOpen() {
         this.refs.modal.open()
     }
+    handleSliding(value) {
+    console.log('sliding:', value);
+  }
+
+  handleSlid(value) {
+    console.log('slid:', value);
+  }
     render() {
         return (
             <div>
@@ -59,6 +66,7 @@ class Home extends React.Component {
                       </ModalBody>
                     </Modal>
                 </div>
+                <Slider defaultValue={40} tickValue={5} start={0} end={100} suffix="%" onSliding={::this.handleSliding} onSlid={::this.handleSlid}/>
             </div>
         )
     }
