@@ -10,6 +10,20 @@
 import React, {Component, PropTypes} from 'react'
 import classnames from 'classnames'
 import './main.less'
+//核心思路
+/*
+这种组件不适合用state来控制ui的刷新，操作一次刷新一次，会有明显卡顿，
+所以还是适合用操作dom来实现
+
+思路，
+用react 渲染出组件来，把关键dom加上 ref
+
+然后开始玩转dom把。。。。。
+ui的刷新全靠操作dom来控制，是不是又回归jquery了，
+
+如果原生js玩的6话，可以引入jquery
+
+ */
 
 class Slider extends Component {
 
@@ -71,6 +85,7 @@ class Slider extends Component {
   }
 
   handleMouseMove(event) { //鼠标移动函数
+    debugger;
     const slider = this.refs.slider  //拿到滑块dom
     const selectedBar = this.refs.selectedBar  //拿到进度条dom
     const bar = this.refs.bar    //拿到进度条容器dom（把进度条限制在容器内）
@@ -80,18 +95,18 @@ class Slider extends Component {
       let left = event.pageX - this.offsetLeft - this.sliderWidth / 4
       if (left <= 0) {
         left = 0
-        selectedBar.style.width = left + 'px'
+        selectedBar.style.width = left + 'px'           //修改进度条的dom属性 
       } else if (left >= (this.width - this.sliderWidth / 2)) {
         left = this.width - this.sliderWidth / 2
         selectedBar.style.width = this.width + 'px'
       } else {
         selectedBar.style.width = left + 'px'
       }
-      slider.style.left = left + 'px'
+      slider.style.left = left + 'px'      //修改滑块的位置
       const text = this.getValue(parseInt(selectedBar.style.width, 10))
       this.refs.msg.innerHTML = text + (this.props.suffix || '')
-      if (typeof this.props.onSliding == 'function') {
-        this.props.onSliding(text)
+      if (typeof this.props.onSliding == 'function') {  //触发监听回调（用户传入的）
+        this.props.onSliding(text)     
       }
     }
   }
@@ -113,10 +128,10 @@ class Slider extends Component {
     BODY.removeEventListener('mouseup', this.mouseUpFn)
   }
 
-  getOffsetLeft(el) {
+  getOffsetLeft(el) { //得到dom现对于文档的left偏移
     let left = 0
     let offsetParent = el
-    while (offsetParent != null && offsetParent != document.body) {
+    while (offsetParent != null && offsetParent != document.body) { //原理就是一层一层的累加
       left += offsetParent.offsetLeft
       offsetParent = offsetParent.offsetParent
     }
